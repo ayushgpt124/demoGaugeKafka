@@ -7,7 +7,7 @@ public class kafkaPublishingMessageImpl {
 
     kafkaUtils ku = new kafkaUtils();
 
-    @Step("create kafkaApp connection with cloudkarafka")
+    @Step("Create kafkaApp connection with cloudkarafka")
     public void createConnectionsStep() {
         ku.createKafkaConnection();
         }
@@ -21,4 +21,13 @@ public class kafkaPublishingMessageImpl {
     public void consumeMessageFromTopics(String topic) {
         ku.consumeMessageFromTopics(topic);
     }
+
+    @Step("Consume latest message from topic <topic>")
+    public void consumeLatestMessageFromTopics(String topic) {
+        ku.getLatestMessageFromKafkaTopic(topic);
+    }
+//    @Step("Close Consumer")
+//    public void consumeLatestMessageFromTopics() {
+//        ku.closeConsumer();
+//    }
 }
